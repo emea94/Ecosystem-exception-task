@@ -4,12 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StudentServiceTest {
 
+    StudentService studentService = new StudentService();
+
     @org.junit.jupiter.api.Test
     void findStudentById_whenStudentIDDoesNotExists_thenReturnException() {
 
-        assertThrows(NoSuchElementException.class, () -> {
-            StudentService studentService = new StudentService();
-            studentService.findStudentById("123");
-        });
-        }
+        assertThrows(NoSuchElementException.class, () -> studentService.findStudentById("123"));
     }
+}

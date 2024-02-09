@@ -16,13 +16,7 @@ public class StudentService {
     }
 
     public Student findStudentById(String id){
-        try {
-            return repo.findStudentById(id)
-                    .orElseThrow(() -> new NoSuchElementException("Student with id " + id + " not found"));
-        }
-        catch (NoSuchElementException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+        return repo.findStudentById(id)
+                .orElseThrow(() -> new NoSuchElementException("Student with id " + id + " not found"));
     }
 }
