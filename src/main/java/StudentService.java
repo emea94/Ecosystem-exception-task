@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 public class StudentService {
@@ -16,9 +17,10 @@ public class StudentService {
 
     public Student findStudentById(String id){
         try {
-            return repo.findStudentById(id).orElseThrow(() -> new IllegalArgumentException("Student with id " + id + " not found"));
+            return repo.findStudentById(id)
+                    .orElseThrow(() -> new NoSuchElementException("Student with id " + id + " not found"));
         }
-        catch (IllegalArgumentException e){
+        catch (NoSuchElementException e){
             System.out.println(e.getMessage());
             return null;
         }
